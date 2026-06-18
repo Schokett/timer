@@ -1,11 +1,15 @@
 import "./TimerDisplay.scss";
 
-function TimerDisplay() {
+type Props = {
+  timerValue: number;
+};
+
+function TimerDisplay({ timerValue }: Props) {
   return (
     <div>
       <p className="section-timer__title-left">
         Time left <br></br>
-        <span>0.000s</span>
+        <span>{timerValue.toFixed(3)}</span>
       </p>
     </div>
   );
