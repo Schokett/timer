@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import Input from "./components/Input.tsx";
 import TimerDisplay from "./components/TimerDisplay.tsx";
 import ActionBtn from "./components/ActionBtn.tsx";
