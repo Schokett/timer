@@ -25,6 +25,17 @@ function App() {
   }
 
   useEffect(() => {
+    const minutes = Math.floor(timerValue / 60);
+    const seconds = Math.floor(timerValue % 60);
+
+    const formatted = `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+
+    document.title = `${formatted} | Timer`;
+  }, [timerValue]);
+
+  useEffect(() => {
     document.body.style.setProperty("--timer-progress", progress.toString());
   }, [progress]);
 
