@@ -4,14 +4,20 @@ import "./ActionBtn.scss";
 type Props = {
   setTimerValue: React.Dispatch<React.SetStateAction<number>>;
   startValue: number;
+  onInvalidTime: () => void;
 };
 
-function ActionBtn({ setTimerValue, startValue }: Props) {
+function ActionBtn({ setTimerValue, startValue, onInvalidTime }: Props) {
   const intervalRef = useRef<number | null>(null);
   const [activeBtn, setActiveBtn] = useState<"start" | "pause" | "reset" | null>(null);
 
   function startTimer() {
     if (intervalRef.current) return;
+
+    if (startValue <= 0) {
+      onInvalidTime();
+      return;
+    }
     setActiveBtn("start");
     intervalRef.current = setInterval(() => {
       setTimerValue((prev) => {

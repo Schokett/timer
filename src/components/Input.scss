@@ -10,5 +10,29 @@
     background-color: transparent;
     color: color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{white});
     font-size: 2rem;
+    transition:
+      border-color 0.6s ease-out,
+      box-shadow 0.6s ease-out;
+
+    &.is-invalid {
+      border-color: #bd0707;
+      box-shadow: 0px 0px 10px #bd070785;
+      transition: none;
+      animation: shake 0.2s ease-in-out 2;
+    }
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

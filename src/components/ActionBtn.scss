@@ -22,7 +22,6 @@
       cursor: pointer;
 
       &:hover {
-        // background-color: $primary-color;
         border: 2px solid
           color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{$end-color});
         box-shadow: 0px 0px 10px 1px
