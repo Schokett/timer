@@ -5,9 +5,10 @@ type Props = {
   setTimerValue: React.Dispatch<React.SetStateAction<number>>;
   startValue: number;
   onInvalidTime: () => void;
+  onStart: () => void;
 };
 
-function ActionBtn({ setTimerValue, startValue, onInvalidTime }: Props) {
+function ActionBtn({ setTimerValue, startValue, onInvalidTime, onStart }: Props) {
   const intervalRef = useRef<number | null>(null);
   const [activeBtn, setActiveBtn] = useState<"start" | "pause" | "reset" | null>(null);
 
@@ -18,6 +19,9 @@ function ActionBtn({ setTimerValue, startValue, onInvalidTime }: Props) {
       onInvalidTime();
       return;
     }
+
+    onStart();
+
     setActiveBtn("start");
     intervalRef.current = setInterval(() => {
       setTimerValue((prev) => {
