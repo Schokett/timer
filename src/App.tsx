@@ -21,13 +21,14 @@ function App() {
     setTimeout(() => setHasError(false), 1500);
   }
 
-  function getAudioCtx() {
+  function getAudioCtx(): AudioContext {
     if (!audioCtxRef.current) {
       const win = window as WindowWithWebkitAudio;
       const AudioContextClass = win.AudioContext || win.webkitAudioContext;
       audioCtxRef.current = new AudioContextClass!();
+      console.log("Neuer AudioContext erstellt", audioCtxRef.current);
     }
-    return audioCtxRef.current;
+    return audioCtxRef.current!;
   }
 
   useEffect(() => {
@@ -47,7 +48,9 @@ function App() {
 
   useEffect(() => {
     if (timerValue === 0 && startValue > 0) {
+      console.log("Timer abgelaufen, spiele Sound");
       const ctx = getAudioCtx();
+      console.log("Context state:", ctx.state);
       playCyberAlarm(ctx);
       setStartValue(0);
     }
