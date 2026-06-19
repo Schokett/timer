@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./ActionBtn.scss";
 
 type Props = {
@@ -8,11 +8,11 @@ type Props = {
 
 function ActionBtn({ setTimerValue, startValue }: Props) {
   const intervalRef = useRef<number | null>(null);
-  console.log("ActionBtn Rendered mit startValue:", startValue);
+  const [activeBtn, setActiveBtn] = useState<"start" | "pause" | "reset" | null>(null);
 
   function startTimer() {
     if (intervalRef.current) return;
-
+    setActiveBtn("start");
     intervalRef.current = setInterval(() => {
       setTimerValue((prev) => {
         if (prev <= 0.01) {
@@ -29,6 +29,7 @@ function ActionBtn({ setTimerValue, startValue }: Props) {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current!);
       intervalRef.current = null;
+      setActiveBtn("pause");
     }
   }
 
@@ -40,17 +41,24 @@ function ActionBtn({ setTimerValue, startValue }: Props) {
     }
 
     setTimerValue(startValue);
+    setActiveBtn("reset");
   }
 
   return (
     <div className="section-timer__btn-container">
-      <button className="section-timer__start btn" onClick={startTimer}>
+      <button
+        className={`section-timer__start btn ${activeBtn === "start" ? "is-active" : ""}`}
+        onClick={startTimer}>
         Start
       </button>
-      <button className="section-timer__pause btn" onClick={pauseTimer}>
+      <button
+        className={`section-timer__start btn ${activeBtn === "pause" ? "is-active" : ""}`}
+        onClick={pauseTimer}>
         Pause
       </button>
-      <button className="section-timer__Reset btn" onClick={resetTimer}>
+      <button
+        className={`section-timer__start btn ${activeBtn === "reset" ? "is-active" : ""}`}
+        onClick={resetTimer}>
         Reset
       </button>
     </div>
