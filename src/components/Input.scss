@@ -8,7 +8,7 @@
     outline: none;
     border: 2px solid #cccccc2d;
     background-color: transparent;
-    color: $primary-color;
+    color: color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{white});
     font-size: 2rem;
   }
 }

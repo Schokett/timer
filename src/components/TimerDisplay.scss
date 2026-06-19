@@ -6,8 +6,9 @@
   }
 
   span {
-    color: $primary-color;
-    text-shadow: 1px 1px 5px $primary-color;
+    color: color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{$end-color});
+    text-shadow: 1px 1px 5px
+      color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{$end-color});
     font-weight: 500;
     font-size: 6rem;
     display: block;

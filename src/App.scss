@@ -58,12 +58,6 @@ body::before {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
-  span {
-    color: color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{$end-color});
-    text-shadow: 1px 1px 5px
-      color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{$end-color});
-  }
-
   &::before {
     content: "";
     position: absolute;
