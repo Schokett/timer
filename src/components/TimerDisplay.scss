@@ -7,7 +7,7 @@
 
   p {
     @include mobile {
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
   }
   span {
@@ -20,7 +20,7 @@
     width: 100%;
 
     @include mobile {
-      font-size: 8rem;
+      font-size: 6rem;
     }
   }
 }
