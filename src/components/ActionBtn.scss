@@ -27,6 +27,11 @@
       cursor: pointer;
       width: 150px;
 
+      @include mobile {
+        font-size: 2rem;
+        width: 300px;
+      }
+
       &:hover {
         border: 2px solid
           color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{$end-color});

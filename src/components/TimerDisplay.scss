@@ -5,6 +5,11 @@
     margin-top: 1rem;
   }
 
+  p {
+    @include mobile {
+      font-size: 4rem;
+    }
+  }
   span {
     color: color-mix(in srgb, #{$primary-color} calc(var(--timer-progress) * 100%), #{$end-color});
     text-shadow: 1px 1px 5px
@@ -13,5 +18,9 @@
     font-size: 6rem;
     display: block;
     width: 100%;
+
+    @include mobile {
+      font-size: 8rem;
+    }
   }
 }
