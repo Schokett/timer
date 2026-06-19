@@ -9,6 +9,12 @@ $end-bg: #180000;
 $start-shadow: #003129;
 $end-shadow: #bd070785;
 
+@mixin mobile {
+  @media (max-width: 700px) {
+    @content;
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -57,6 +63,10 @@ body::before {
   background: linear-gradient(150deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 100%);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
+
+  @include mobile {
+    width: 100%;
+  }
 
   &::before {
     content: "";
