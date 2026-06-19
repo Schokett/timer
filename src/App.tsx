@@ -5,7 +5,8 @@ import TimerDisplay from "./components/TimerDisplay.tsx";
 import ActionBtn from "./components/ActionBtn.tsx";
 import { playCyberAlarm } from "./utils/audio.ts";
 
-interface WindowWithWebkitAudio extends Window {
+interface WindowWithWebkitAudio {
+  AudioContext?: typeof AudioContext;
   webkitAudioContext?: typeof AudioContext;
 }
 
@@ -23,10 +24,9 @@ function App() {
 
   function getAudioCtx(): AudioContext {
     if (!audioCtxRef.current) {
-      const win = window as WindowWithWebkitAudio;
+      const win = window as unknown as WindowWithWebkitAudio;
       const AudioContextClass = win.AudioContext || win.webkitAudioContext;
       audioCtxRef.current = new AudioContextClass!();
-      console.log("Neuer AudioContext erstellt", audioCtxRef.current);
     }
     return audioCtxRef.current!;
   }
