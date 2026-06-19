@@ -3,6 +3,7 @@ import "./App.scss";
 import Input from "./components/Input.tsx";
 import TimerDisplay from "./components/TimerDisplay.tsx";
 import ActionBtn from "./components/ActionBtn.tsx";
+import { playCyberAlarm } from "./utils/audio.ts";
 
 function App() {
   const [timerValue, setTimerValue] = useState(0);
@@ -23,53 +24,14 @@ function App() {
     return audioCtxRef.current;
   }
 
-  function playPingSound() {
-    const audioCtx = getAudioCtx();
-
-    const playTone = (frequency, startTime, duration) => {
-      const oscillator = audioCtx.createOscillator();
-      const gainNode = audioCtx.createGain();
-
-      oscillator.connect(gainNode);
-      gainNode.connect(audioCtx.destination);
-
-      oscillator.type = "triangle";
-      oscillator.frequency.setValueAtTime(frequency, startTime);
-
-      gainNode.gain.setValueAtTime(0, startTime);
-      gainNode.gain.linearRampToValueAtTime(0.2, startTime + 0.02);
-      gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
-
-      oscillator.start(startTime);
-      oscillator.stop(startTime + duration);
-    };
-
-    const schedule = () => {
-      const now = audioCtx.currentTime;
-
-      playTone(600, now, 0.12);
-      playTone(900, now + 0.1, 0.15);
-
-      playTone(600, now + 0.4, 0.12);
-      playTone(900, now + 0.5, 0.15);
-
-      playTone(600, now + 0.8, 0.12);
-      playTone(900, now + 0.9, 0.15);
-    };
-
-    if (audioCtx.state === "suspended") {
-      audioCtx.resume().then(schedule);
-    } else {
-      schedule();
-    }
-  }
   useEffect(() => {
     document.body.style.setProperty("--timer-progress", progress.toString());
   }, [progress]);
 
   useEffect(() => {
     if (timerValue === 0 && startValue > 0) {
-      playPingSound();
+      const ctx = getAudioCtx();
+      playCyberAlarm(ctx);
       setStartValue(0);
     }
   }, [timerValue, startValue]);
