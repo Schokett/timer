@@ -10,8 +10,8 @@ function App() {
 
   return (
     <div className="section-timer">
-      <Input timerValue={timerValue} setTimerValue={setTimerValue} setStartValue={setStartValue} />
       <TimerDisplay timerValue={timerValue} />
+      <Input startValue={startValue} setTimerValue={setTimerValue} setStartValue={setStartValue} />
       <ActionBtn setTimerValue={setTimerValue} startValue={startValue} />
     </div>
   );

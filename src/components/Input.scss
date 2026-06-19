@@ -1,8 +1,14 @@
+@import "../App.scss";
+
 .section-timer {
   &__timer-input {
     border-radius: 8px;
-    padding: 0.5rem;
+    padding: 1rem;
+    width: 80%;
     outline: none;
-    border: 1px solid #ccc;
+    border: 2px solid #cccccc2d;
+    background-color: transparent;
+    color: $primary-color;
+    font-size: 2rem;
   }
 }

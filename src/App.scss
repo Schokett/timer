@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+$primary-color: #65f6ce;
+$main-font: "Oxanium", sans-serif;
+
 * {
   padding: 0;
   margin: 0;
@@ -10,6 +14,59 @@ body {
   text-align: center;
   font-size: 2.5rem;
   height: 100vh;
+
+  background: radial-gradient(circle, #ffffff38 10%, transparent 11%);
+  background-size: 0.7em 0.7em;
+  background-color: #001818;
+  opacity: 1;
+}
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 150%;
+  pointer-events: none;
+  -webkit-box-shadow: inset 0px 0px 150px 350px #004136;
+  box-shadow: inset 0px 0px 150px 350px #004136;
+  border-radius: 60%;
+  transform: scale(1.4);
+  mix-blend-mode: multiply;
 }
 .section-timer {
+  font-family: $main-font;
+  position: relative;
+  box-shadow: 0px 0px 250px 50px #1c443985;
+  color: white;
+  border-radius: 20px;
+  width: 600px;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  height: auto;
+  padding: 2rem;
+
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+
+    background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.65) 0%,
+      rgba(255, 255, 255, 0.15) 100%
+    );
+
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events: none;
+  }
 }

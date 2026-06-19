@@ -1,20 +1,21 @@
 import "./Input.scss";
 
 type Props = {
-  timerValue: number;
+  startValue: number;
   setTimerValue: (value: number) => void;
   setStartValue: (value: number) => void;
 };
 
-function Input({ timerValue, setTimerValue, setStartValue }: Props) {
+function Input({ startValue, setTimerValue, setStartValue }: Props) {
+  console.log("Input Rendered mit startValue:", startValue);
   return (
     <div>
-      <p className="section-timer__title">Zeit festlegen:</p>
+      {/* <p className="section-timer__title">Zeit festlegen:</p> */}
       <input
         type="number"
         className="section-timer__timer-input"
-        placeholder="0"
-        value={timerValue}
+        value={startValue === 0 ? "" : startValue}
+        autoFocus
         onChange={(event) => {
           const value = Number(event.target.value);
           setTimerValue(value);

@@ -1,2 +1,15 @@
+@import "../App.scss";
+
 .section-timer {
+  &__counter-display {
+    margin-top: 1rem;
+  }
+
+  span {
+    color: $primary-color;
+    font-weight: 500;
+    font-size: 6rem;
+    display: block;
+    width: 100%;
+  }
 }

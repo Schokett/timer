@@ -9,7 +9,7 @@ function TimerDisplay({ timerValue }: Props) {
     <div>
       <p className="section-timer__title-left">
         Time left <br></br>
-        <span>{timerValue.toFixed(3)}</span>
+        <span>{timerValue.toFixed(3).replace(".", ":")}</span>
       </p>
     </div>
   );

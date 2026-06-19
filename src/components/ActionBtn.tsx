@@ -8,6 +8,7 @@ type Props = {
 
 function ActionBtn({ setTimerValue, startValue }: Props) {
   const intervalRef = useRef<number | null>(null);
+  console.log("ActionBtn Rendered mit startValue:", startValue);
 
   function startTimer() {
     if (intervalRef.current) return;
@@ -32,6 +33,7 @@ function ActionBtn({ setTimerValue, startValue }: Props) {
   }
 
   function resetTimer() {
+    console.log("startValue beim Reset:", startValue);
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
