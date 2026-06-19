@@ -18,6 +18,7 @@ $end-shadow: #bd070785;
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -26,7 +27,8 @@ body {
   align-items: center;
   text-align: center;
   font-size: 2.5rem;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   background: radial-gradient(circle, #ffffff38 10%, transparent 11%);
   background-size: 0.7em 0.7em;
   opacity: 1;
@@ -66,7 +68,7 @@ body::before {
 
   @include mobile {
     width: 100%;
-    margin: 1rem auto;
+    margin: 0 auto;
   }
 
   &::before {
