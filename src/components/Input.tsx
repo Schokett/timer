@@ -7,7 +7,6 @@ type Props = {
 };
 
 function Input({ startValue, setTimerValue, setStartValue }: Props) {
-  console.log("Input Rendered mit startValue:", startValue);
   return (
     <div>
       {/* <p className="section-timer__title">Zeit festlegen:</p> */}
